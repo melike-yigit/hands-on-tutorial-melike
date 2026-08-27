@@ -89,7 +89,7 @@ class EchoHandler(BaseHTTPRequestHandler):
         EchoHandler.RECENT_REQUESTS.append(request_body)
         # Only retain the most recent MAX_RECENT_REQUESTS requests
         if len(EchoHandler.RECENT_REQUESTS) > EchoHandler.MAX_RECENT_REQUESTS:
-            EchoHandler.RECENT_REQUESTS[-EchoHandler.MAX_RECENT_REQUESTS:] # {*}
+            EchoHandler.RECENT_REQUESTS = EchoHandler.RECENT_REQUESTS[-EchoHandler.MAX_RECENT_REQUESTS:]
 
     @classmethod
     def print_last_request(cls, n):
