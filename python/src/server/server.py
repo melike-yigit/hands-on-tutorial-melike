@@ -76,11 +76,6 @@ class EchoHandler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def process_echo_request(self, request_body):
-        # Artificial "One in a million" bug. {*}
-        with open("/dev/urandom", "rb") as f:
-            r = int.from_bytes(f.read(4), "big")
-            if r % 1_000_000 == 0:
-                return "Surprise!".encode("utf-8")
         # Correct response:
         return request_body
 
